@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Name:</strong>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <strong>Appointments:</strong></br>
+  <% @customer.appointments.each do |appointment| %>
+  <strong>Appointment_date:</strong> <%= appointment.visit_date %> <br>
+    Pet: <%= appointment.pet %><br>
+    Doctor: <%= appointment.doctor.name %><br>
+  <%end%>
+</br></br>
+</p>
+<%= link_to 'Edit', edit_customer_path(@customer) %> |
+<%= link_to 'Back', customers_path %>

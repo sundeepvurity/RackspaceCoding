@@ -1,0 +1,51 @@
+<%= form_for(@doctor) do |f| %>
+  <% if @doctor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
+
+      <ul>
+      <% @doctor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :Name %>
+    <%= f.text_field :name %>
+  </div>
+  <%= f.fields_for :doctor_info do |doctor_info_form| %>
+    <div class="field">
+      <%= doctor_info_form.label :address %>
+      <%= doctor_info_form.text_field :address %>
+      <br/>
+    </div>
+    <div class="field">
+      <%= doctor_info_form.label :city %>
+      <%= doctor_info_form.text_field :city %>
+      <br/>
+    </div>
+    <div class="field">
+      <%= doctor_info_form.label :state %>
+      <%= doctor_info_form.text_field :state %>
+      <br/>
+    </div>
+    <div class="field">
+      <%= doctor_info_form.label :zip %>
+      <%= doctor_info_form.text_field :zip %>
+      <br/>
+    </div>
+    <div class="field">
+      <%= doctor_info_form.label :school %>
+      <%= doctor_info_form.text_field :school %>
+      <br/>
+    </div>
+    <div class="field">
+      <%= doctor_info_form.label :years_since_passed %>
+      <%= doctor_info_form.text_field :years_since_passed %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
